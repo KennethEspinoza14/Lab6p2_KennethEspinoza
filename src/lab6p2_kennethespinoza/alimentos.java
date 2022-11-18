@@ -49,6 +49,11 @@ public class alimentos {
     public void setCalorias(int calorias) {
         this.calorias = calorias;
     }
+
+    @Override
+    public String toString() {
+        return "alimentos{" + "nombre=" + nombre + ", categoria=" + categoria + ", costo=" + costo + ", calorias=" + calorias + '}';
+    }
     
     
 

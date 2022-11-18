@@ -6,6 +6,7 @@
 package lab6p2_kennethespinoza;
 
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -18,13 +19,7 @@ public class engordar extends javax.swing.JFrame {
      */
     public engordar() {
         initComponents();
-         ArrayList jugadores = new ArrayList();
-         
-         String nombre, alimento;
-         int nivel, consumo;
-         
-        jugadores.add(new jugador("Alan", 0, 0, ""));
-        
+                
     }
     
     
@@ -65,7 +60,7 @@ public class engordar extends javax.swing.JFrame {
         jb_crearal = new javax.swing.JButton();
         tf_costo = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        tf_categoria = new javax.swing.JTextField();
+        tf_calorias = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         tf_nombrecat = new javax.swing.JTextField();
@@ -157,11 +152,14 @@ public class engordar extends javax.swing.JFrame {
 
         jLabel4.setText("Categoria");
 
-        cb_categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel5.setText("Costo");
 
         jb_crearal.setText("CREAR");
+        jb_crearal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_crearalMouseClicked(evt);
+            }
+        });
 
         jLabel6.setText("Calorias");
 
@@ -170,9 +168,9 @@ public class engordar extends javax.swing.JFrame {
         jLabel8.setText("Nombre de categoria");
 
         jb_crearcat.setText("CREAR");
-        jb_crearcat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_crearcatActionPerformed(evt);
+        jb_crearcat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_crearcatMouseClicked(evt);
             }
         });
 
@@ -189,6 +187,11 @@ public class engordar extends javax.swing.JFrame {
         jLabel11.setText("Costo");
 
         jb_crearbil.setText("CREAR");
+        jb_crearbil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_crearbilActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -204,8 +207,7 @@ public class engordar extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11))
+                            .addComponent(jLabel10))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -216,24 +218,25 @@ public class engordar extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tf_nombre, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cb_categoria, javax.swing.GroupLayout.Alignment.LEADING, 0, 189, Short.MAX_VALUE))
+                            .addComponent(cb_categoria, javax.swing.GroupLayout.Alignment.LEADING, 0, 189, Short.MAX_VALUE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(76, 76, 76)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jb_crearcat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jb_crearbil, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(103, 103, 103)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(tf_costo)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel6)
-                                    .addComponent(tf_categoria, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                                    .addComponent(tf_calorias, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                                 .addComponent(jb_crearal, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(76, 76, 76)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jb_crearcat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jb_crearbil, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addGap(18, 18, 18))))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,26 +245,29 @@ public class engordar extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jb_crearal, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(125, 125, 125)
                         .addComponent(cb_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_costo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
-                        .addComponent(tf_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(51, 51, 51)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tf_costo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel6))
+                                .addGap(18, 18, 18)
+                                .addComponent(tf_calorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jb_crearal, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel8)
@@ -269,19 +275,19 @@ public class engordar extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_nombrecat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jb_crearcat))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel9)
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_consumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jb_crearbil))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(8, 8, 8)
                 .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tf_costobil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Craftear", jPanel4);
@@ -325,13 +331,39 @@ public class engordar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jb_crearcatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crearcatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jb_crearcatActionPerformed
-
     private void tf_consumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_consumoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_consumoActionPerformed
+
+    private void jb_crearbilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crearbilActionPerformed
+         
+    }//GEN-LAST:event_jb_crearbilActionPerformed
+
+    private void jb_crearcatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_crearcatMouseClicked
+       
+        cb_categoria.addItem(tf_nombrecat.getText());
+        tf_nombrecat.setText("");
+    }//GEN-LAST:event_jb_crearcatMouseClicked
+
+    private void jb_crearalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_crearalMouseClicked
+        // TODO add your handling code here:
+        
+        String nombre;
+        int costo, calorias;
+        
+        nombre = tf_nombre.getText();
+        costo = Integer.parseInt(tf_costo.getText());
+        calorias = Integer.parseInt(tf_calorias.getText());
+        a.add(new alimentos(nombre, nombre, costo, calorias));
+        
+        tf_nombre.setText("");
+        tf_costo.setText("");
+        tf_calorias.setText("");
+        
+        System.out.println(a);
+        
+        
+    }//GEN-LAST:event_jb_crearalMouseClicked
 
     /**
      * @param args the command line arguments
@@ -395,11 +427,22 @@ public class engordar extends javax.swing.JFrame {
     private javax.swing.JButton jb_crearbil;
     private javax.swing.JButton jb_crearcat;
     private javax.swing.JProgressBar jp_alimentar;
-    private javax.swing.JTextField tf_categoria;
+    private javax.swing.JTextField tf_calorias;
     private javax.swing.JTextField tf_consumo;
     private javax.swing.JTextField tf_costo;
     private javax.swing.JTextField tf_costobil;
     private javax.swing.JTextField tf_nombre;
     private javax.swing.JTextField tf_nombrecat;
     // End of variables declaration//GEN-END:variables
+
+    
+    ArrayList <alimentos> a = new ArrayList();
+         ArrayList jugadores = new ArrayList();
+         
+         String nombre, alimento;
+         int nivel, consumo;
+         
+        
+
+    
 }
