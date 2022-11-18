@@ -54,6 +54,8 @@ public class alimentos {
     public String toString() {
         return "alimentos{" + "nombre=" + nombre + ", categoria=" + categoria + ", costo=" + costo + ", calorias=" + calorias + '}';
     }
+
+   
     
     
 

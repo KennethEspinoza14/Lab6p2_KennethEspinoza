@@ -12,13 +12,13 @@ public class jugador {
     private String nombre;
     private int nvlgordura;
     private int puntos;
-    private String alimento;
+    private alimentos a;
 
-    public jugador(String nombre, int nvlgordura, int puntos, String alimento) {
+    public jugador(String nombre, int nvlgordura, int puntos, alimentos a) {
         this.nombre = nombre;
         this.nvlgordura = nvlgordura;
         this.puntos = puntos;
-        this.alimento = alimento;
+        this.a = a;
     }
 
     public String getNombre() {
@@ -45,14 +45,20 @@ public class jugador {
         this.puntos = puntos;
     }
 
-    public String getAlimento() {
-        return alimento;
+    public alimentos getA() {
+        return a;
     }
 
-    public void setAlimento(String alimento) {
-        this.alimento = alimento;
+    public void setA(alimentos a) {
+        this.a = a;
     }
 
+    @Override
+    public String toString() {
+        return "jugador{" + "nombre=" + nombre + ", nvlgordura=" + nvlgordura + ", puntos=" + puntos + ", a=" + a + '}';
+    }
+
+   
     
    
 

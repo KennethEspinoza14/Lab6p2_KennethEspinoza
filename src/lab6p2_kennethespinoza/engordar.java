@@ -7,6 +7,7 @@ package lab6p2_kennethespinoza;
 
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -19,17 +20,9 @@ public class engordar extends javax.swing.JFrame {
      */
     public engordar() {
         initComponents();
+        defauljug();
                 
     }
-    
-    
-   
-    
-    
-    
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,11 +38,17 @@ public class engordar extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jb_alimentar = new javax.swing.JButton();
         jp_alimentar = new javax.swing.JProgressBar();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jl_jugadores = new javax.swing.JList<>();
         jPanel3 = new javax.swing.JPanel();
+        jb_comprar = new javax.swing.JButton();
+        jb_comprar1 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jl_tienda = new javax.swing.JList<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jl_tienda1 = new javax.swing.JList<>();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -79,26 +78,9 @@ public class engordar extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jTree1);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Usuario", "Nivel", "Consumo", "Alimento"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable1);
-
         jb_alimentar.setText("ALIMENTAR");
+
+        jScrollPane5.setViewportView(jl_jugadores);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -109,9 +91,9 @@ public class engordar extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
                     .addComponent(jb_alimentar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jp_alimentar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jp_alimentar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE))
                 .addGap(82, 82, 82))
         );
         jPanel1Layout.setVerticalGroup(
@@ -126,22 +108,49 @@ public class engordar extends javax.swing.JFrame {
                         .addComponent(jp_alimentar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jb_alimentar)
-                        .addGap(43, 43, 43)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(52, 52, 52)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)))
                 .addContainerGap(102, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Jugar", jPanel1);
 
+        jb_comprar.setText("COMPRAR");
+
+        jb_comprar1.setText("COMPRAR");
+
+        jl_tienda.setModel(new DefaultListModel());
+        jScrollPane3.setViewportView(jl_tienda);
+
+        jl_tienda1.setModel(new DefaultListModel());
+        jScrollPane4.setViewportView(jl_tienda1);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 771, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jb_comprar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jb_comprar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jb_comprar)
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jb_comprar1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         jTabbedPane1.addTab("Tienda", jPanel3);
@@ -337,26 +346,33 @@ public class engordar extends javax.swing.JFrame {
 
     private void jb_crearcatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_crearcatMouseClicked
        
-        cb_categoria.addItem(tf_nombrecat.getText());
-        tf_nombrecat.setText("");
+       cb_categoria.addItem(tf_nombrecat.getText());
+       tf_nombrecat.setText("");
+        
+        
     }//GEN-LAST:event_jb_crearcatMouseClicked
 
     private void jb_crearalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_crearalMouseClicked
-        // TODO add your handling code here:
         
-        String nombre;
+         DefaultListModel modelo
+                = (DefaultListModel) jl_tienda1.getModel();
+        
+        String nombre, categoria = "";
         int costo, calorias;
         
         nombre = tf_nombre.getText();
         costo = Integer.parseInt(tf_costo.getText());
         calorias = Integer.parseInt(tf_calorias.getText());
-        a.add(new alimentos(nombre, nombre, costo, calorias));
+        a.add(new alimentos(nombre, categoria, costo, calorias));
+        modelo.addElement(new alimentos(nombre, categoria, costo, calorias));
         
         tf_nombre.setText("");
         tf_costo.setText("");
         tf_calorias.setText("");
-        
+        jl_tienda1.setModel(modelo);
         System.out.println(a);
+        
+        
         
         
     }//GEN-LAST:event_jb_crearalMouseClicked
@@ -364,16 +380,45 @@ public class engordar extends javax.swing.JFrame {
     private void jb_crearbilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_crearbilMouseClicked
         int consumomax, costo;
         
+         DefaultListModel modelo
+                = (DefaultListModel) jl_tienda.getModel();
+        
         consumomax = Integer.parseInt(tf_consumo.getText());
         costo = Integer.parseInt(tf_costoBill.getText());
-        b.add(new billetera(consumo, costo));
+        b.add(new billetera(consumomax, costo));
         
         tf_consumo.setText("");
         tf_costoBill.setText("");
+        jl_tienda.setModel(modelo);
         
+     
         
     }//GEN-LAST:event_jb_crearbilMouseClicked
 
+    private void defauljug(){
+                         
+        String nombre = "", alimento = "", nombre_c = "", categoria = "";
+        int nivel, puntos, costo, calorias;
+        alimentos a = new alimentos("Pan", "Panaderia", 200, 1000);
+        
+        j.add(new jugador("Juan", 0, 0, a));
+        j.add(new jugador("James", 0, 0, a));
+        j.add(new jugador("Nulia", 0, 0, a));
+        j.add(new jugador("Rigoberto",0, 0, a));
+        j.add(new jugador("Kenneth", 0, 0, a));
+        j.add(new jugador("Ingrid", 0, 0, a));
+        j.add(new jugador("Carlos", 0, 0, a));
+        j.add(new jugador("Hector", 0, 0, a));
+        j.add(new jugador("Pedro", 0, 0, a));
+        j.add(new jugador("Pamela", 0, 0, a));
+        
+        DefaultListModel modelo = new DefaultListModel();
+        
+        for (jugador jugador : j) {
+            modelo.addElement(jugador.toString());
+        }
+        jl_jugadores.setModel(modelo);
+    }
     /**
      * @param args the command line arguments
      */
@@ -427,14 +472,20 @@ public class engordar extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTree jTree1;
     private javax.swing.JButton jb_alimentar;
+    private javax.swing.JButton jb_comprar;
+    private javax.swing.JButton jb_comprar1;
     private javax.swing.JButton jb_crearal;
     private javax.swing.JButton jb_crearbil;
     private javax.swing.JButton jb_crearcat;
+    private javax.swing.JList<String> jl_jugadores;
+    private javax.swing.JList<String> jl_tienda;
+    private javax.swing.JList<String> jl_tienda1;
     private javax.swing.JProgressBar jp_alimentar;
     private javax.swing.JTextField tf_calorias;
     private javax.swing.JTextField tf_consumo;
@@ -446,12 +497,12 @@ public class engordar extends javax.swing.JFrame {
 
     
     ArrayList<alimentos> a = new ArrayList();
-    ArrayList <jugador> jugadores = new ArrayList();
+    ArrayList <jugador> j = new ArrayList();
     ArrayList <billetera> b = new ArrayList();
+    ArrayList <categoria> c = new ArrayList();
 
          
-         String nombre, alimento;
-         int nivel, consumo;
+      
          
         
 
