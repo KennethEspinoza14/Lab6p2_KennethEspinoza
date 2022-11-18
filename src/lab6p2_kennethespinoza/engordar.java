@@ -69,7 +69,7 @@ public class engordar extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         tf_consumo = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        tf_costobil = new javax.swing.JTextField();
+        tf_costoBill = new javax.swing.JTextField();
         jb_crearbil = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
 
@@ -187,9 +187,9 @@ public class engordar extends javax.swing.JFrame {
         jLabel11.setText("Costo");
 
         jb_crearbil.setText("CREAR");
-        jb_crearbil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_crearbilActionPerformed(evt);
+        jb_crearbil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_crearbilMouseClicked(evt);
             }
         });
 
@@ -211,7 +211,7 @@ public class engordar extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(tf_costobil, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tf_costoBill, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tf_consumo, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tf_nombrecat)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,7 +286,7 @@ public class engordar extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tf_costobil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tf_costoBill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -335,10 +335,6 @@ public class engordar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_consumoActionPerformed
 
-    private void jb_crearbilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crearbilActionPerformed
-         
-    }//GEN-LAST:event_jb_crearbilActionPerformed
-
     private void jb_crearcatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_crearcatMouseClicked
        
         cb_categoria.addItem(tf_nombrecat.getText());
@@ -364,6 +360,19 @@ public class engordar extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jb_crearalMouseClicked
+
+    private void jb_crearbilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_crearbilMouseClicked
+        int consumomax, costo;
+        
+        consumomax = Integer.parseInt(tf_consumo.getText());
+        costo = Integer.parseInt(tf_costoBill.getText());
+        b.add(new billetera(consumo, costo));
+        
+        tf_consumo.setText("");
+        tf_costoBill.setText("");
+        
+        
+    }//GEN-LAST:event_jb_crearbilMouseClicked
 
     /**
      * @param args the command line arguments
@@ -430,14 +439,16 @@ public class engordar extends javax.swing.JFrame {
     private javax.swing.JTextField tf_calorias;
     private javax.swing.JTextField tf_consumo;
     private javax.swing.JTextField tf_costo;
-    private javax.swing.JTextField tf_costobil;
+    private javax.swing.JTextField tf_costoBill;
     private javax.swing.JTextField tf_nombre;
     private javax.swing.JTextField tf_nombrecat;
     // End of variables declaration//GEN-END:variables
 
     
-    ArrayList <alimentos> a = new ArrayList();
-         ArrayList jugadores = new ArrayList();
+    ArrayList<alimentos> a = new ArrayList();
+    ArrayList <jugador> jugadores = new ArrayList();
+    ArrayList <billetera> b = new ArrayList();
+
          
          String nombre, alimento;
          int nivel, consumo;
