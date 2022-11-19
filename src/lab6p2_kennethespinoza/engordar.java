@@ -8,6 +8,9 @@ package lab6p2_kennethespinoza;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -21,6 +24,7 @@ public class engordar extends javax.swing.JFrame {
     public engordar() {
         initComponents();
         defauljug();
+    
                 
     }
 
@@ -37,7 +41,7 @@ public class engordar extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        jt_cat = new javax.swing.JTree();
         jb_alimentar = new javax.swing.JButton();
         jp_alimentar = new javax.swing.JProgressBar();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -76,7 +80,7 @@ public class engordar extends javax.swing.JFrame {
 
         jLabel1.setText("SIMULADOR DE ENGORDAR");
 
-        jScrollPane1.setViewportView(jTree1);
+        jScrollPane1.setViewportView(jt_cat);
 
         jb_alimentar.setText("ALIMENTAR");
 
@@ -88,8 +92,8 @@ public class engordar extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jb_alimentar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jp_alimentar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -349,7 +353,8 @@ public class engordar extends javax.swing.JFrame {
        cb_categoria.addItem(tf_nombrecat.getText());
        tf_nombrecat.setText("");
         
-        
+        JOptionPane.showMessageDialog(this,
+                    "categoria agregado exitosamente");
     }//GEN-LAST:event_jb_crearcatMouseClicked
 
     private void jb_crearalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_crearalMouseClicked
@@ -357,14 +362,14 @@ public class engordar extends javax.swing.JFrame {
          DefaultListModel modelo
                 = (DefaultListModel) jl_tienda1.getModel();
         
-        String nombre, categoria = "";
+        String nombre, categoria;
         int costo, calorias;
         
         nombre = tf_nombre.getText();
         costo = Integer.parseInt(tf_costo.getText());
         calorias = Integer.parseInt(tf_calorias.getText());
-        a.add(new alimentos(nombre, categoria, costo, calorias));
-        modelo.addElement(new alimentos(nombre, categoria, costo, calorias));
+        a.add(new alimentos(nombre, "", costo, calorias));
+        modelo.addElement(new alimentos(nombre, "", costo, calorias));
         
         tf_nombre.setText("");
         tf_costo.setText("");
@@ -372,7 +377,8 @@ public class engordar extends javax.swing.JFrame {
         jl_tienda1.setModel(modelo);
         System.out.println(a);
         
-        
+        JOptionPane.showMessageDialog(this,
+                    "Alimento agregado exitosamente");
         
         
     }//GEN-LAST:event_jb_crearalMouseClicked
@@ -391,33 +397,54 @@ public class engordar extends javax.swing.JFrame {
         tf_costoBill.setText("");
         jl_tienda.setModel(modelo);
         
-     
+        JOptionPane.showMessageDialog(this,
+                    "Billetera agregada exitosamente");
         
     }//GEN-LAST:event_jb_crearbilMouseClicked
 
     private void defauljug(){
-                         
-        String nombre = "", alimento = "", nombre_c = "", categoria = "";
+      
+        String nombre = "", alimento = "", nombre_c = "", categoria;
         int nivel, puntos, costo, calorias;
         alimentos a = new alimentos("Pan", "Panaderia", 200, 1000);
-        
+
         j.add(new jugador("Juan", 0, 0, a));
         j.add(new jugador("James", 0, 0, a));
         j.add(new jugador("Nulia", 0, 0, a));
-        j.add(new jugador("Rigoberto",0, 0, a));
+        j.add(new jugador("Rigoberto", 0, 0, a));
         j.add(new jugador("Kenneth", 0, 0, a));
         j.add(new jugador("Ingrid", 0, 0, a));
         j.add(new jugador("Carlos", 0, 0, a));
         j.add(new jugador("Hector", 0, 0, a));
         j.add(new jugador("Pedro", 0, 0, a));
         j.add(new jugador("Pamela", 0, 0, a));
-        
+
         DefaultListModel modelo = new DefaultListModel();
-        
+
         for (jugador jugador : j) {
             modelo.addElement(jugador.toString());
         }
         jl_jugadores.setModel(modelo);
+    }
+    
+    private void llenararbol(){
+       
+        DefaultTreeModel m = (DefaultTreeModel) jt_cat.getModel();
+        DefaultMutableTreeNode raiz
+                = (DefaultMutableTreeNode) m.getRoot();
+        DefaultMutableTreeNode nodo_alimentos;
+        nodo_alimentos
+                = new DefaultMutableTreeNode(
+                        new alimentos((String)tf_nombre.getText(),
+                                 (String)tf_nombrecat.getText(),
+                                Integer.parseInt(tf_costo.getText()),
+                                Integer.parseInt(tf_calorias.getText())
+                        ));
+        
+        
+        raiz.add(nodo_alimentos);
+        m.reload();
+           
     }
     /**
      * @param args the command line arguments
@@ -476,7 +503,6 @@ public class engordar extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTree jTree1;
     private javax.swing.JButton jb_alimentar;
     private javax.swing.JButton jb_comprar;
     private javax.swing.JButton jb_comprar1;
@@ -487,6 +513,7 @@ public class engordar extends javax.swing.JFrame {
     private javax.swing.JList<String> jl_tienda;
     private javax.swing.JList<String> jl_tienda1;
     private javax.swing.JProgressBar jp_alimentar;
+    private javax.swing.JTree jt_cat;
     private javax.swing.JTextField tf_calorias;
     private javax.swing.JTextField tf_consumo;
     private javax.swing.JTextField tf_costo;
