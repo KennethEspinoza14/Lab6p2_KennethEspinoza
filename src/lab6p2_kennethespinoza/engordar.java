@@ -24,7 +24,7 @@ public class engordar extends javax.swing.JFrame {
     public engordar() {
         initComponents();
         defauljug();
-    
+        llenararbol();
                 
     }
 
@@ -405,9 +405,10 @@ public class engordar extends javax.swing.JFrame {
     private void defauljug(){
       
         String nombre = "", alimento = "", nombre_c = "", categoria;
-        int nivel, puntos, costo, calorias;
+        int nivel, puntos, costo, calorias, costob, pts;
         alimentos a = new alimentos("Pan", "Panaderia", 200, 1000);
-
+        
+        b.add(new billetera(200, 2000));
         j.add(new jugador("Juan", 0, 0, a));
         j.add(new jugador("James", 0, 0, a));
         j.add(new jugador("Nulia", 0, 0, a));
@@ -420,11 +421,18 @@ public class engordar extends javax.swing.JFrame {
         j.add(new jugador("Pamela", 0, 0, a));
 
         DefaultListModel modelo = new DefaultListModel();
+        DefaultListModel modelo2 = new DefaultListModel();
+
 
         for (jugador jugador : j) {
             modelo.addElement(jugador.toString());
         }
         jl_jugadores.setModel(modelo);
+        
+        for (billetera billetera : b) {
+            modelo2.addElement(billetera.toString());
+        }
+        jl_tienda.setModel(modelo2);
     }
     
     private void llenararbol(){
@@ -432,19 +440,25 @@ public class engordar extends javax.swing.JFrame {
         DefaultTreeModel m = (DefaultTreeModel) jt_cat.getModel();
         DefaultMutableTreeNode raiz
                 = (DefaultMutableTreeNode) m.getRoot();
-        DefaultMutableTreeNode nodo_alimentos;
-        nodo_alimentos
-                = new DefaultMutableTreeNode(
-                        new alimentos((String)tf_nombre.getText(),
-                                 (String)tf_nombrecat.getText(),
-                                Integer.parseInt(tf_costo.getText()),
-                                Integer.parseInt(tf_calorias.getText())
-                        ));
-        
-        
-        raiz.add(nodo_alimentos);
-        m.reload();
+
+        for (int i = 0; i < c.size(); i++) {
+            DefaultMutableTreeNode nodo_categoria = new DefaultMutableTreeNode(i);
+            for (int k = 0; k < a.size(); k++) {
+                DefaultMutableTreeNode nodo_alimentos = new DefaultMutableTreeNode(k);
+                for (int y = 0; y < j.size(); y++) {
+                    if (a.get(y).getNombre().equals(j.get(y).getNombre())) {
+                        DefaultMutableTreeNode nodo_jugadores = new DefaultMutableTreeNode(y);
+                    }
+                    nodo_categoria.add(nodo_alimentos);
+                }
+            }
+            raiz.add(nodo_categoria);
            
+        }
+            
+         
+         m.reload();
+         jt_cat.setModel(m);
     }
     /**
      * @param args the command line arguments

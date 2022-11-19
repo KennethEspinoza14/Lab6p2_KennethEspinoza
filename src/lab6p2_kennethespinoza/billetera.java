@@ -33,6 +33,11 @@ public class billetera {
     public void setCosto(int costo) {
         this.costo = costo;
     }
+
+    @Override
+    public String toString() {
+        return "billetera{" + "pts_consumo=" + pts_consumo + ", costo=" + costo + '}';
+    }
     
     
 }
